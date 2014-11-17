@@ -1,0 +1,23 @@
+{
+  "name": "Page Evaluator",
+  "description": "Detect active tab and send notification",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+	"activeTab",
+	"http://*/*", 
+    "https://*/*",
+	"https://alef.fiit.stuba.sk/*",
+	"http://localhost/*",
+	"https://localhost/*"
+  ],
+  "background": {
+  "page": "background.html",
+  "persistent": false
+  },
+  "browser_action": {
+	"default_icon": "icon.png",
+    "default_title": "Detect active tab and send notification"
+  },
+  "manifest_version": 2
+}
