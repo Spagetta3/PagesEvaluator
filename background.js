@@ -2,15 +2,17 @@ function getData(tabId, tab, method)
 {
 	var data = "Data=" + tab.url + " " + method;
 	var pos = data.search("alef");
-	var getText = Array();
 	if (pos >= 0)
 	{
-		chrome.tabs.executeScript(tabId, {"code": "document.getElementById(\"logout\").innerText.split('|')"}, function (result) {
-		for (i = 0; i < result[0].length; i++)
-			getText [i] = result[0][i];
+		chrome.tabs.executeScript(tabId, {"code": "document.getElementById('ajaxtabtracker_alefuser').innerText"}, function (result) {
+		if (result != null)
+			data ="Data=" + data + " " + result;
 		});
-		if (getText[0] != null)
-			data ="Data=" + data + " " + getText[0];
+		
+		chrome.tabs.executeScript(tabId, {"code": "document.getElementById('ajaxtabtracker_alefrole').innerText"}, function (result) {
+		if (result != null)
+			data ="Data=" + data + " " + result;
+		});
 	}
 	return data;
 }
